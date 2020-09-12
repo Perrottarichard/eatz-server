@@ -1,16 +1,14 @@
-require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors')
+const searchRouter = require('./controllers/searchByCoordinates')
 
 const app = express()
 
 app.use(cors())
 app.use(express.json())
-app.use(express.static(path.join(__dirname, 'build')))
 
-app.get('/api', (req, res) => {
-  res.send('<h1>Welcome to the backend!</h1>')
-})
+app.use('/api/searchByCoordinates', searchRouter)
 
 let PORT = process.env.PORT || 3001
 
