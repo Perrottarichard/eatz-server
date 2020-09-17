@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { getByCoordinates } = require('../api-helpers/getFromZomato')
+const { getByCoordinates } = require('../api-helpers/getFromGoogle')
 
 router.post('/', async (request, response) => {
   let lat = request.body.lat

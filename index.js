@@ -1,14 +1,13 @@
-
 const express = require('express');
 const cors = require('cors')
-const searchRouter = require('./controllers/searchByCoordinates')
+const searchCoordinatesRouter = require('./controllers/searchByCoordinates')
 
 const app = express()
 
 app.use(cors())
 app.use(express.json())
 
-app.use('/api/searchByCoordinates', searchRouter)
+app.use('/api/searchByCoordinates', searchCoordinatesRouter)
 
 let PORT = process.env.PORT || 3001
 
