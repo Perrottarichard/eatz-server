@@ -1,5 +1,6 @@
 const express = require('express');
 require('dotenv').config()
+const path = require('path')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const passport = require('passport')
@@ -7,10 +8,13 @@ const session = require('express-session')
 const searchCoordinatesRouter = require('./controllers/searchByCoordinates')
 const autoSearchPredictionsRouter = require('./controllers/autoSearchPredictions')
 const textSearchRouter = require('./controllers/textSearch')
-const authRouter = require('./controllers/auth')
+const googleAuthRouter = require('./controllers/googleAuth')
+const facebookAuthRouter = require('./controllers/facebookAuth')
+require('./googlePassport')(passport)
+require('./facebookPassport')(passport)
 
 const app = express()
-require('./passport')(passport)
+app.use(cors())
 
 //connect to DB
 const MONGO_URI = process.env.MONGO_URI
@@ -25,7 +29,7 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   })
 
 
-app.use(cors())
+app.use(express.static(path.join(__dirname, 'build')))
 app.use(express.json())
 
 //express-session middleware
@@ -43,7 +47,16 @@ app.use(passport.session())
 app.use('/api/searchByCoordinates', searchCoordinatesRouter)
 app.use('/api/autoSearchPredictions', autoSearchPredictionsRouter)
 app.use('/api/textSearch', textSearchRouter)
-app.use('/auth', authRouter)
+
+//google login authentication route
+app.use('/auth/google', googleAuthRouter)
+
+//facebook login authentication route
+app.use('/auth/facebook', facebookAuthRouter)
+
+app.get('*', (request, response) => {
+  response.sendFile(path.join(__dirname + '/build/index.html'));
+});
 
 let PORT = process.env.PORT || 3001
 
