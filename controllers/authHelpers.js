@@ -7,7 +7,14 @@ const CLIENT_HOME = 'http://localhost:3000'
 
 //successful login
 router.get('/login/success', (req, res) => {
-  res.json(req.session._id)
+  if (req.user) {
+    res.json({
+      success: true,
+      message: "user successfully authenticated",
+      user: req.user,
+      cookies: req.cookies
+    })
+  }
 })
 
 //failed login with message

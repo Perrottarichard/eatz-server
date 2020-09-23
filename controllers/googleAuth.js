@@ -10,9 +10,6 @@ const CLIENT_HOME = 'http://localhost:3000'
 router.get('/', passport.authenticate('google', { scope: ['profile'] }))
 
 //google auth callback
-router.get('/callback', passport.authenticate('google', { failureRedirect: '/login/failed' }), (req, res) => {
-  console.log(req.user)
-  res.redirect(`${CLIENT_HOME}/dashboard`)
-})
+router.get('/callback', passport.authenticate('google', { failureRedirect: '/login/failed', successRedirect: `${CLIENT_HOME}/dashboard` }))
 
 module.exports = router

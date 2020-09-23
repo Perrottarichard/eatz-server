@@ -6,7 +6,6 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const cors = require('cors')
 const passport = require('passport')
-
 const searchCoordinatesRouter = require('./controllers/searchByCoordinates')
 const autoSearchPredictionsRouter = require('./controllers/autoSearchPredictions')
 const textSearchRouter = require('./controllers/textSearch')
