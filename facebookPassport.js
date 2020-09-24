@@ -13,7 +13,8 @@ module.exports = (passport) => {
         facebookId: profile.id,
         displayName: profile.displayName,
         firstName: profile.name.givenName,
-        lastName: profile.name.familyName
+        lastName: profile.name.familyName,
+        // email: profile.emails[0].value
       }
       try {
         let user = await User.findOne({ facebookId: profile.id })

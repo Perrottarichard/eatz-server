@@ -28,7 +28,7 @@ router.get('/login/failed', (req, res) => {
 //redirect to home on logout
 router.get("/logout", (req, res) => {
   req.logout()
-  res.redirect(CLIENT_HOME)
+  res.redirect(CLIENT_HOME, 200)
 })
 
 module.exports = router
