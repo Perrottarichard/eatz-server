@@ -4,7 +4,7 @@ const axios = require('axios')
 const getByCoordinates = async (lat, lon) => {
   try {
     console.log('fetching nearby places')
-    const res = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lon}&radius=2000&type=restaurant&keyword=pizza&key=${process.env.GOOGLE_KEY}`
+    const res = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lon}&rankby=distance&type=restaurant&keyword=pizza&key=${process.env.GOOGLE_KEY}`
     )
     return res
   } catch (error) {

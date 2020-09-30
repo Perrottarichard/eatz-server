@@ -12,6 +12,7 @@ const textSearchRouter = require('./controllers/textSearch')
 const googleAuthRouter = require('./controllers/googleAuth')
 const facebookAuthRouter = require('./controllers/facebookAuth')
 const authHelpers = require('./controllers/authHelpers')
+const newRestaurantRequestRouter = require('./controllers/newRestaurantRequest')
 require('./googlePassport')(passport)
 require('./facebookPassport')(passport)
 
@@ -63,6 +64,9 @@ app.use('/auth/facebook', facebookAuthRouter)
 
 // authentication endpoint helpers
 app.use('/authhelpers', authHelpers)
+
+//new restaurant request endpoint
+app.use('/api/requestNewRestaurant', newRestaurantRequestRouter)
 
 const authCheck = (req, res, next) => {
   if (!req.user) {
