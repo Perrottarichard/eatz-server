@@ -13,6 +13,8 @@ const googleAuthRouter = require('./controllers/googleAuth')
 const facebookAuthRouter = require('./controllers/facebookAuth')
 const authHelpers = require('./controllers/authHelpers')
 const newRestaurantRequestRouter = require('./controllers/newRestaurantRequest')
+const itemsRouter = require('./controllers/items')
+const placeDetailsRouter = require('./controllers/placeDetails')
 require('./googlePassport')(passport)
 require('./facebookPassport')(passport)
 
@@ -55,6 +57,7 @@ app.use(passport.session())
 app.use('/api/searchByCoordinates', searchCoordinatesRouter)
 app.use('/api/autoSearchPredictions', autoSearchPredictionsRouter)
 app.use('/api/textSearch', textSearchRouter)
+app.use('/api/placeDetails', placeDetailsRouter)
 
 //google login authentication route
 app.use('/auth/google', googleAuthRouter)
@@ -65,8 +68,11 @@ app.use('/auth/facebook', facebookAuthRouter)
 // authentication endpoint helpers
 app.use('/authhelpers', authHelpers)
 
-//new restaurant request endpoint
+//POST new restaurant request endpoint
 app.use('/api/requestNewRestaurant', newRestaurantRequestRouter)
+
+//GET menu items
+app.use('api/menuItems', itemsRouter)
 
 const authCheck = (req, res, next) => {
   if (!req.user) {
@@ -81,7 +87,7 @@ const authCheck = (req, res, next) => {
 
 // if logged in, send the profile response,
 // otherwise, send a 401 not authenticated response
-// authCheck before navigating to home page
+// authCheck before routing to home page
 app.get("/", authCheck, (req, res) => {
   res.status(200).json({
     authenticated: true,

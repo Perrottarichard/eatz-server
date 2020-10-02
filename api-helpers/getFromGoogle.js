@@ -26,9 +26,18 @@ const getTextSearch = async (search) => {
   }
 }
 
+const getPlaceDetails = async (place_id) => {
+  try {
+    return await axios.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&&key=${process.env.GOOGLE_KEY}`)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   getByCoordinates,
   getAutoSearchPredictions,
-  getTextSearch
+  getTextSearch,
+  getPlaceDetails
 }
 
