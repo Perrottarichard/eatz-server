@@ -1,0 +1,14 @@
+[
+  {
+    "description": "Get 20% off your first order!",
+    "code": "1STORDER"
+  },
+  {
+    "description": "Spend $23 and get a free beverage!",
+    "code": "23DRINKFREE"
+  },
+  {
+    "description": "Luca Brasi sleeps with the fishes.  Get 10% off a Sicilian pie with anchovies!",
+    "code": "RIPBRASI"
+  }
+]

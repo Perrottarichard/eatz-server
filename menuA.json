@@ -6,12 +6,12 @@
       "margherita",
       "sicilian"
     ],
-    "pizzaSizes": [
+    "pizza_sizes": [
       "small",
       "medium",
       "large"
     ],
-    "regularToppings": [
+    "regular_toppings": [
       "pepperoni",
       "ham",
       "bacon",
@@ -23,22 +23,22 @@
       "onions",
       "garlic"
     ],
-    "premiumToppings": [
+    "premium_toppings": [
       "prosciutto",
       "capicola",
       "gorgonzola",
       "feta"
     ],
-    "pizzaBasePrices": {
+    "pizza_base_prices": {
       "small": 10,
       "medium": 15,
       "large": 20
     },
-    "addOns": {
+    "add_ons": {
       "margherita": 1.2,
       "sicilian": 1.2,
-      "premiumToppings": 4,
-      "regularToppings": 2
+      "premium_toppings": 4,
+      "regular_toppings": 2
     }
   },
   {
@@ -49,9 +49,9 @@
       "fiji water",
       "birch beer"
     ],
-    "beverageSizes": [
+    "beverage_sizes": [
       "20oz"
     ],
-    "beverageBasePrices": 1.75
+    "beverage_base_prices": 1.75
   }
 ]

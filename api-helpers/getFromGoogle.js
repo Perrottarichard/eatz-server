@@ -33,11 +33,19 @@ const getPlaceDetails = async (place_id) => {
     console.log(error)
   }
 }
+const getPlaceDetailsPhoto = async (photo_ref) => {
+  try {
+    return await axios.get(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&photoreference=${photo_ref}&key=${process.env.GOOGLE_KEY}`)
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 module.exports = {
   getByCoordinates,
   getAutoSearchPredictions,
   getTextSearch,
-  getPlaceDetails
+  getPlaceDetails,
+  getPlaceDetailsPhoto
 }
 
