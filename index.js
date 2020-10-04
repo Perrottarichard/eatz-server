@@ -15,6 +15,7 @@ const authHelpers = require('./controllers/authHelpers')
 const newRestaurantRequestRouter = require('./controllers/newRestaurantRequest')
 const itemsRouter = require('./controllers/items')
 const placeDetailsRouter = require('./controllers/placeDetails')
+const userAccountRouter = require('./controllers/userAccount')
 require('./googlePassport')(passport)
 require('./facebookPassport')(passport)
 
@@ -73,6 +74,9 @@ app.use('/api/requestNewRestaurant', newRestaurantRequestRouter)
 
 //GET menu items
 app.use('api/menuItems', itemsRouter)
+
+//PUT user account info
+app.use('/account', userAccountRouter)
 
 const authCheck = (req, res, next) => {
   if (!req.user) {
