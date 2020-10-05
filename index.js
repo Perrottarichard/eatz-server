@@ -75,7 +75,7 @@ app.use('/api/requestNewRestaurant', newRestaurantRequestRouter)
 //GET menu items
 app.use('api/menuItems', itemsRouter)
 
-//PUT user account info
+//PUT user account info (favorites, cart, addresses)
 app.use('/account', userAccountRouter)
 
 const authCheck = (req, res, next) => {
