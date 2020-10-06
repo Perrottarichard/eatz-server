@@ -29,17 +29,38 @@
       "gorgonzola",
       "feta"
     ],
-    "pizza_base_prices": {
-      "small": 10,
-      "medium": 15,
-      "large": 20
-    },
-    "add_ons": {
-      "margherita": 1.2,
-      "sicilian": 1.2,
-      "premium_toppings": 4,
-      "regular_toppings": 2
-    }
+    "pizza_base_prices": [
+      {
+        "size": "small",
+        "price": 10
+      },
+      {
+        "size": "medium",
+        "price": 15
+      },
+      {
+        "size": "large",
+        "price": 20
+      }
+    ],
+    "add_ons": [
+      {
+        "variant": "margherita",
+        "multiplier": 1.2
+      },
+      {
+        "variant": "sicilian",
+        "multiplier": 1.2
+      },
+      {
+        "variant": "premium_toppings",
+        "add": 4
+      },
+      {
+        "variant": "regular_toppings",
+        "add": 2
+      }
+    ]
   },
   {
     "type": "beverages",
