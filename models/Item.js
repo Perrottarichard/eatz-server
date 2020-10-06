@@ -4,13 +4,13 @@ const ItemSchema = new mongoose.Schema({
   type: String,
   variants: [String],
   choices: [String],
-  pizzaSizes: [String],
-  beverageSizes: [String],
-  regularToppings: [String],
-  premiumToppings: [String],
-  pizzaBasePrices: Object,
-  beverageBasePrices: Number,
-  addOns: Object
+  pizza_sizes: [String],
+  beverage_sizes: [String],
+  regular_toppings: [String],
+  premium_toppings: [String],
+  pizza_base_prices: Object,
+  beverage_base_prices: Number,
+  add_ons: Object
 })
 module.exports = mongoose.model('Item', ItemSchema)
 

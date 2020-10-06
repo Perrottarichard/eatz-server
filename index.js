@@ -73,7 +73,7 @@ app.use('/authhelpers', authHelpers)
 app.use('/api/requestNewRestaurant', newRestaurantRequestRouter)
 
 //GET menu items
-app.use('api/menuItems', itemsRouter)
+app.use('/api/menuItems', itemsRouter)
 
 //PUT user account info (favorites, cart, addresses)
 app.use('/account', userAccountRouter)
