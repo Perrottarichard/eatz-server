@@ -37,6 +37,8 @@ const UserSchema = new mongoose.Schema({
       // toppings: [String],
       // flavor: String,
       // size: String,
+      restaurantName: String,
+      restaurantId: String,
       totalPrice: Number
     }
   ],
