@@ -45,6 +45,10 @@
     ],
     "add_ons": [
       {
+        "variant": "regular",
+        "multiplier": 1
+      },
+      {
         "variant": "margherita",
         "multiplier": 1.2
       },

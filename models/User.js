@@ -33,10 +33,11 @@ const UserSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Item'
       },
-      // quantity: Number,
-      // toppings: [String],
-      // flavor: String,
-      // size: String,
+      selectedVariant: String,
+      selectedSize: String,
+      selectedRegularToppings: [String],
+      selectedPremiumToppings: [String],
+      selectedBeverages: [String],
       restaurantName: String,
       restaurantId: String,
       totalPrice: Number
