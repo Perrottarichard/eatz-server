@@ -29,10 +29,7 @@ const UserSchema = new mongoose.Schema({
   favoriteRestaurants: [String],
   cart: [
     {
-      item: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Item'
-      },
+      itemType: String,
       selectedVariant: String,
       selectedSize: String,
       selectedRegularToppings: [String],
@@ -40,7 +37,7 @@ const UserSchema = new mongoose.Schema({
       selectedBeverages: [String],
       restaurantName: String,
       restaurantId: String,
-      totalPrice: Number
+      totalPrice: Number,
     }
   ],
   orders: [
