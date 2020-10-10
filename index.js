@@ -16,6 +16,7 @@ const newRestaurantRequestRouter = require('./controllers/newRestaurantRequest')
 const itemsRouter = require('./controllers/items')
 const placeDetailsRouter = require('./controllers/placeDetails')
 const userAccountRouter = require('./controllers/userAccount')
+const promosRouter = require('./controllers/promos')
 require('./googlePassport')(passport)
 require('./facebookPassport')(passport)
 
@@ -71,6 +72,9 @@ app.use('/authhelpers', authHelpers)
 
 //POST new restaurant request endpoint
 app.use('/api/requestNewRestaurant', newRestaurantRequestRouter)
+
+//GET promotions
+app.use('/api/promos', promosRouter)
 
 //GET menu items
 app.use('/api/menuItems', itemsRouter)

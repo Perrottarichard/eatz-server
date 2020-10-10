@@ -32,15 +32,24 @@ router.put('/removefavorite', async (req, res) => {
     console.log(error)
   }
 })
-router.put('/addCart', async (req, res) => {
+router.put('/addPizza', async (req, res) => {
   let user_id = req.body.user_id
   let item = req.body.item
-  console.log(user_id)
-  console.log(item)
   try {
     const user = await User.findById(user_id)
-    console.log(user)
-    console.log(user.cart)
+    user.cart.push(item)
+    const saved = await user.save()
+    res.json(saved)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+router.put('/addBeverages', async (req, res) => {
+  let user_id = req.body.user_id
+  let item = req.body.item
+  try {
+    const user = await User.findById(user_id)
     user.cart.push(item)
     const saved = await user.save()
     res.json(saved)
