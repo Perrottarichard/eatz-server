@@ -57,5 +57,19 @@ router.put('/addBeverages', async (req, res) => {
     console.log(error)
   }
 })
+router.put('/removeCart', async (req, res) => {
+  let user_id = req.body.user_id
+  let item_id = req.body.item_id
+  console.log(item_id)
+  try {
+    const user = await User.findById(user_id)
+    let updated = user.cart.filter(i => i.id !== item_id)
+    user.cart = updated
+    const saved = await user.save()
+    res.json(saved)
+  } catch (error) {
+    console.log(error)
+  }
+})
 
 module.exports = router
