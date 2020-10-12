@@ -77,12 +77,12 @@ router.put('/updateActiveCartBilling', async (req, res) => {
   let totalPrice = req.body.totalPrice
   let diff = req.body.diff
   let promoApplied = req.body.promoApplied
-  let discount = req.body.discount
+  let newTotal = req.body.newTotal
   const info = {
-    totalOrderPrice: totalPrice,
+    beforePromoPrice: totalPrice,
+    afterPromoPrice: newTotal,
     promoApplied: promoApplied,
-    discount: discount,
-    diff: diff
+    priceDiff: diff
   }
   try {
     const user = await User.findById(user_id)

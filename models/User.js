@@ -42,10 +42,12 @@ const UserSchema = new mongoose.Schema({
   ]
   ,
   activeCartBilling: {
-    totalOrderPrice: Number,
+    beforePromoPrice: Number,
+    afterPromoPrice: Number,
     promoApplied: String,
     discount: String,
-    diff: Number
+    priceDiff: Number,
+    qualifyingOrderId: String
   },
   orders: [
     {
