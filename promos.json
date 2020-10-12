@@ -2,16 +2,19 @@
   {
     "description": "Get 20% off your first order!",
     "code": "1STORDER",
-    "multiplier": 0.8
+    "multiplier": 0.8,
+    "discount": "20%"
   },
   {
     "description": "Spend $23 and get a free beverage!",
     "code": "23DRINKFREE",
-    "credit": 1.75
+    "credit": 1.75,
+    "discount": 1.75
   },
   {
     "description": "Luca Brasi sleeps with the fishes.  Get 10% off a Sicilian pie with anchovies!",
     "code": "RIPBRASI",
-    "multiplier": 0.9
+    "multiplier": 0.9,
+    "discount": "10%"
   }
 ]

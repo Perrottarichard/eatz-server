@@ -71,5 +71,27 @@ router.put('/removeCart', async (req, res) => {
     console.log(error)
   }
 })
+router.put('/updateActiveCartBilling', async (req, res) => {
+  let user_id = req.body.user_id
+  console.log(user_id)
+  let totalPrice = req.body.totalPrice
+  let diff = req.body.diff
+  let promoApplied = req.body.promoApplied
+  let discount = req.body.discount
+  const info = {
+    totalOrderPrice: totalPrice,
+    promoApplied: promoApplied,
+    discount: discount,
+    diff: diff
+  }
+  try {
+    const user = await User.findById(user_id)
+    user.activeCartBilling = info
+    const saved = await user.save()
+    res.json(saved)
+  } catch (error) {
+    console.log(error)
+  }
+})
 
 module.exports = router

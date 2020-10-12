@@ -39,7 +39,14 @@ const UserSchema = new mongoose.Schema({
       restaurantId: String,
       totalPrice: Number,
     }
-  ],
+  ]
+  ,
+  activeCartBilling: {
+    totalOrderPrice: Number,
+    promoApplied: String,
+    discount: String,
+    diff: Number
+  },
   orders: [
     {
       type: mongoose.Schema.Types.ObjectId, ref: 'Order'
