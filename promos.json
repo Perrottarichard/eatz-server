@@ -12,7 +12,7 @@
     "discount": 1.75
   },
   {
-    "description": "Luca Brasi sleeps with the fishes.  Get 10% off a Sicilian pie with anchovies!",
+    "description": "Luca Brasi sleeps with the fishes.  Order a Sicilian pie with anchovies and get 10% off your entire order!",
     "code": "RIPBRASI",
     "multiplier": 0.9,
     "discount": "10%"

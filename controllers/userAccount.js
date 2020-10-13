@@ -73,7 +73,6 @@ router.put('/removeCart', async (req, res) => {
 })
 router.put('/updateActiveCartBilling', async (req, res) => {
   let user_id = req.body.user_id
-  console.log(user_id)
   let totalPrice = req.body.totalPrice
   let diff = req.body.diff
   let promoApplied = req.body.promoApplied
@@ -87,6 +86,18 @@ router.put('/updateActiveCartBilling', async (req, res) => {
   try {
     const user = await User.findById(user_id)
     user.activeCartBilling = info
+    const saved = await user.save()
+    res.json(saved)
+  } catch (error) {
+    console.log(error)
+  }
+})
+router.put('/clearCart', async (req, res) => {
+  let user_id = req.body.user_id
+  try {
+    const user = await User.findById(user_id)
+    user.activeCartBilling = {}
+    user.cart = []
     const saved = await user.save()
     res.json(saved)
   } catch (error) {
