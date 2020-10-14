@@ -51,7 +51,30 @@ const UserSchema = new mongoose.Schema({
   },
   orders: [
     {
-      type: mongoose.Schema.Types.ObjectId, ref: 'Order'
+      cart: [
+        {
+          itemType: String,
+          selectedVariant: String,
+          selectedSize: String,
+          selectedRegularToppings: [String],
+          selectedPremiumToppings: [String],
+          selectedBeverages: [String],
+          restaurantName: String,
+          restaurantId: String,
+          totalPrice: Number,
+        }
+      ],
+      activeCartBilling: {
+        beforePromoPrice: Number,
+        afterPromoPrice: Number,
+        promoApplied: String,
+        discount: String,
+        priceDiff: Number,
+        qualifyingOrderId: String
+      },
+      confirmation: String,
+      date: { type: Date, default: Date.now },
+
     }
   ],
   paymentInfo: {
@@ -79,4 +102,7 @@ const UserSchema = new mongoose.Schema({
     specialInstructions: String
   }]
 })
+
+UserSchema.plugin(require('mongoose-autopopulate'))
+
 module.exports = mongoose.model('User', UserSchema)

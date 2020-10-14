@@ -1,5 +1,4 @@
 const express = require('express')
-const Order = require('../models/Order')
 const router = express.Router()
 const User = require('../models/User')
 const shortid = require('shortid')
@@ -61,7 +60,6 @@ router.put('/addBeverages', async (req, res) => {
 router.put('/removeCart', async (req, res) => {
   let user_id = req.body.user_id
   let item_id = req.body.item_id
-  console.log(item_id)
   try {
     const user = await User.findById(user_id)
     let updated = user.cart.filter(i => i.id !== item_id)
@@ -111,7 +109,7 @@ router.put('/addNewOrder', async (req, res) => {
     const user = await User.findById(user_id)
     const cartCopy = [...user.cart]
     const confirmation = shortid.generate()
-    const order = new Order({ user: user_id, confirmation: confirmation, cart: cartCopy, activeCartBilling: user.activeCartBilling })
+    const order = { user: user_id, confirmation: confirmation, cart: cartCopy, activeCartBilling: user.activeCartBilling }
     user.orders.push(order)
     user.activeCartBilling = {}
     user.cart = []
