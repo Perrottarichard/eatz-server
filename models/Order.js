@@ -15,9 +15,12 @@ const OrderSchema = new mongoose.Schema({
     }
   ],
   activeCartBilling: {
-    totalOrderPrice: Number,
+    beforePromoPrice: Number,
+    afterPromoPrice: Number,
     promoApplied: String,
-    discount: String
+    discount: String,
+    priceDiff: Number,
+    qualifyingOrderId: String
   },
   confirmation: String,
   date: { type: Date, default: Date.now },

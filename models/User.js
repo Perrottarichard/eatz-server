@@ -69,9 +69,8 @@ const UserSchema = new mongoose.Schema({
     creditCardCVV: String
   },
   addresses: [{
-    userAssignedName: String,
-    buildingName: String,
-    number: String,
+    locationName: String,
+    addressNumber: String,
     street: String,
     city: String,
     state: String,

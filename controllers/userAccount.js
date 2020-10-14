@@ -1,7 +1,8 @@
 const express = require('express')
+const Order = require('../models/Order')
 const router = express.Router()
 const User = require('../models/User')
-
+const shortid = require('shortid')
 
 //in app.js /account
 
@@ -98,6 +99,34 @@ router.put('/clearCart', async (req, res) => {
     const user = await User.findById(user_id)
     user.activeCartBilling = {}
     user.cart = []
+    const saved = await user.save()
+    res.json(saved)
+  } catch (error) {
+    console.log(error)
+  }
+})
+router.put('/addNewOrder', async (req, res) => {
+  let user_id = req.body.user_id
+  try {
+    const user = await User.findById(user_id)
+    const cartCopy = [...user.cart]
+    const confirmation = shortid.generate()
+    const order = new Order({ user: user_id, confirmation: confirmation, cart: cartCopy, activeCartBilling: user.activeCartBilling })
+    user.orders.push(order)
+    user.activeCartBilling = {}
+    user.cart = []
+    const saved = await user.save()
+    res.json(saved)
+  } catch (error) {
+    console.log(error)
+  }
+})
+router.put('/addNewAddress', async (req, res) => {
+  let user_id = req.body.user_id
+  let addressObject = req.body.addressObject
+  try {
+    const user = await User.findById(user_id)
+    user.addresses.push(addressObject)
     const saved = await user.save()
     res.json(saved)
   } catch (error) {

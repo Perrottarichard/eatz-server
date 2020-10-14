@@ -16,7 +16,8 @@ const newRestaurantRequestRouter = require('./controllers/newRestaurantRequest')
 const itemsRouter = require('./controllers/items')
 const placeDetailsRouter = require('./controllers/placeDetails')
 const userAccountRouter = require('./controllers/userAccount')
-const promosRouter = require('./controllers/promos')
+const promosRouter = require('./controllers/promos');
+const User = require('./models/User');
 require('./googlePassport')(passport)
 require('./facebookPassport')(passport)
 
@@ -96,7 +97,7 @@ const authCheck = (req, res, next) => {
 // if logged in, send the profile response,
 // otherwise, send a 401 not authenticated response
 // authCheck before routing to home page
-app.get("/", authCheck, (req, res) => {
+app.get("/", authCheck, async (req, res) => {
   res.status(200).json({
     authenticated: true,
     message: "user successfully authenticated",
