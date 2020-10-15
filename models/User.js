@@ -74,7 +74,6 @@ const UserSchema = new mongoose.Schema({
       },
       confirmation: String,
       date: { type: Date, default: Date.now },
-
     }
   ],
   paymentInfo: {

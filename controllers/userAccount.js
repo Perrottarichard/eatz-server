@@ -149,6 +149,7 @@ router.put('/addNewOrder', async (req, res) => {
   } catch (error) {
     console.log(error)
   }
+
 })
 router.put('/addNewAddress', async (req, res) => {
   let user_id = req.body.user_id
