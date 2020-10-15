@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
 const shortid = require('shortid')
+const nodemailer = require('nodemailer')
 
 //in app.js /account
 
@@ -115,6 +116,38 @@ router.put('/addNewOrder', async (req, res) => {
     user.cart = []
     const saved = await user.save()
     res.json(saved)
+    // create reusable transporter object
+    let transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false, // true for 465, false for other ports
+      auth: {
+        user: 'richardmendacks@gmail.com',
+        pass: `${process.env.MAILPASS}`,
+      },
+      tls: { rejectUnauthorized: false }
+    });
+    let mailBody = `
+    <h3>Your order has been placed</h3>
+    <h5>Confirmation code: ${user.orders[user.orders.length - 1].confirmation}</h5>
+    <p>Please allow 25 - 35 minutes for delivery.</p>
+    `
+    // send mail with defined transport object
+    let info = await transporter.sendMail({
+      from: '"PizzaPizza" <richardmendacks@gmail.com>', // sender address
+      to: `${user.email}`, // list of receivers
+      subject: "PizzaPizza order confirmation", // Subject line
+      text: "Order placed", // plain text body
+      html: mailBody, // html body
+    });
+
+    console.log("Message sent: %s", info.messageId);
+    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+
+    // Preview only available when sending through an Ethereal account
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+
   } catch (error) {
     console.log(error)
   }
