@@ -129,9 +129,9 @@ router.put('/addNewOrder', async (req, res) => {
     });
     let mailBody = `
     <h3>Your order has been placed</h3>
-    <h5>${user.orders[user.orders.length - 1].cart[0].restaurantName} is preparing your order.</h5>
-    <p>Please allow 25 - 35 minutes for delivery.</p>
-    <h5>Confirmation code: ${user.orders[user.orders.length - 1].confirmation}</h5>
+    <h5>${user.orders[user.orders.length - 1].cart[0].restaurantName} is preparing your order</h5>
+    <h6>Please allow 25 - 35 minutes for delivery</h6>
+    <h6>Confirmation code: ${user.orders[user.orders.length - 1].confirmation}</h6>
     
     `
     // send mail with defined transport object
