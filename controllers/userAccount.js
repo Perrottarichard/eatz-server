@@ -163,5 +163,18 @@ router.put('/addNewAddress', async (req, res) => {
     console.log(error)
   }
 })
+router.put('/editAddress', async (req, res) => {
+  let user_id = req.body.user_id
+  let indexToEdit = req.body.indexToEdit
+  let addressObject = req.body.addressObject
+  try {
+    const user = await User.findById(user_id)
+    user.addresses[indexToEdit] = addressObject
+    const saved = await user.save()
+    res.json(saved)
+  } catch (error) {
+    console.log(error)
+  }
+})
 
 module.exports = router
