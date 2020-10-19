@@ -25,11 +25,11 @@ module.exports = (passport) => {
           user = await User.create(newUser)
           // create reusable transporter object
           let transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
-            port: 587,
+            host: "mail.mangolatte.dev",
+            port: 26,
             secure: false, // true for 465, false for other ports
             auth: {
-              user: 'richardmendacks@gmail.com',
+              user: 'richard@mangolatte.dev',
               pass: `${process.env.MAILPASS}`,
             },
             tls: { rejectUnauthorized: false }
@@ -37,7 +37,7 @@ module.exports = (passport) => {
 
           // send mail with defined transport object
           let info = await transporter.sendMail({
-            from: '"PizzaPizza" <richardmendacks@gmail.com>', // sender address
+            from: '"PizzaPizza" <richard@mangolatte.dev>', // sender address
             to: `${user.email}`, // list of receivers
             subject: "Welcome to PizzaPizza", // Subject line
             text: "Thanks for joining the best pizza delivery service on the planet", // plain text body
