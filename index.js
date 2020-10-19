@@ -87,18 +87,7 @@ app.use('/api/menuItems', itemsRouter)
 //PUT user account info (favorites, cart, addresses)
 app.use('/api/account', userAccountRouter)
 
-app.get("/api", authCheck, async (req, res) => {
-  res.status(200).json({
-    authenticated: true,
-    message: "user successfully authenticated",
-    user: req.user
-  });
-});
-
-
-
 const authCheck = (req, res, next) => {
-
   if (!req.user) {
     res.status(401).json({
       authenticated: false,
@@ -108,10 +97,16 @@ const authCheck = (req, res, next) => {
     next();
   }
 };
-
 // if logged in, send the profile response,
 // otherwise, send a 401 not authenticated response
 // authCheck before routing to home page
+app.get("/api", authCheck, async (req, res) => {
+  res.status(200).json({
+    authenticated: true,
+    message: "user successfully authenticated",
+    user: req.user
+  });
+});
 
 app.get('*', (request, response) => {
   response.sendFile(path.join(__dirname + '/build/index.html'));
