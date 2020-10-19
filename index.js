@@ -23,7 +23,12 @@ require('./facebookPassport')(passport)
 
 const app = express()
 app.use(cors({
-  origin: "http://localhost:3000", // allow server to accept request from different origin
+
+  //dev
+  // origin: "http://localhost:3000",
+
+  //prod
+  origin: "https://pizzapizzadelivery.netlify.app",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true // allow session cookie from browser to pass through
 }))
@@ -40,9 +45,8 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     console.error('error connecting to MongoDB:', error.message)
   })
 
-
-// app.use(express.static(path.join(__dirname, 'build')))
 app.use(express.json())
+// app.use(express.static(path.join(__dirname, 'build')))
 
 //express-session middleware
 app.use(session({
@@ -99,6 +103,11 @@ const authCheck = (req, res, next) => {
 // if logged in, send the profile response,
 // otherwise, send a 401 not authenticated response
 // authCheck before routing to home page
+
+// app.get('*', (request, response) => {
+//   response.sendFile(path.join(__dirname + '/build/index.html'));
+// });
+
 app.get("/", authCheck, async (req, res) => {
   res.status(200).json({
     authenticated: true,
@@ -106,10 +115,6 @@ app.get("/", authCheck, async (req, res) => {
     user: req.user
   });
 });
-
-// app.get('*', (request, response) => {
-//   response.sendFile(path.join(__dirname + '/build/index.html'));
-// });
 
 let PORT = process.env.PORT || 3001
 

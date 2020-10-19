@@ -2,7 +2,12 @@ const express = require('express')
 const passport = require('passport')
 const router = express.Router()
 
-const CLIENT_HOME = 'http://localhost:3000'
+const CLIENT_HOME =
+  //dev
+  // 'http://localhost:3000'
+
+  //prod
+  "https://pizzapizzadelivery.netlify.app"
 
 //in app.js "/auth/facebook"
 
