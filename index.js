@@ -28,7 +28,7 @@ app.use(cors({
   //origin: "http://localhost:3000",
 
   //prod
-  origin: ["https://pizzapizzadelivery.herokuapp.com", "http://pizzapizzadelivery.herokuapp.com"],
+  origin: "https://pizzapizzadelivery.netlify.app",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true // allow session cookie from browser to pass through
 }))
@@ -103,12 +103,11 @@ const authCheck = (req, res, next) => {
 // otherwise, send a 401 not authenticated response
 // authCheck before routing to home page
 
-app.get('*', (request, response) => {
-  response.sendFile(path.join(__dirname + '/build/index.html'));
-});
+// app.get('*', (request, response) => {
+//   response.sendFile(path.join(__dirname + '/build/index.html'));
+// });
 
-app.get("*", authCheck, async (req, res) => {
-  console.log('here')
+app.get("/", authCheck, async (req, res) => {
   res.status(200).json({
     authenticated: true,
     message: "user successfully authenticated",
