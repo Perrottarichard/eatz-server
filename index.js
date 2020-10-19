@@ -54,6 +54,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  cookie: { sameSite: false }
 }))
 
 //passport middleware
@@ -90,7 +91,7 @@ app.use('/account', userAccountRouter)
 
 
 const authCheck = (req, res, next) => {
-  console.log('req', req)
+
   if (!req.user) {
     res.status(401).json({
       authenticated: false,
