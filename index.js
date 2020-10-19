@@ -89,12 +89,14 @@ app.use('/api/menuItems', itemsRouter)
 app.use('/account', userAccountRouter)
 
 const authCheck = (req, res, next) => {
+  console.log(req.user)
   if (!req.user) {
     res.status(401).json({
       authenticated: false,
       message: "user has not been authenticated"
     });
   } else {
+    console.log('next')
     next();
   }
 };
@@ -103,6 +105,7 @@ const authCheck = (req, res, next) => {
 // otherwise, send a 401 not authenticated response
 // authCheck before routing to home page
 app.get("/", authCheck, async (req, res) => {
+  console.log('here')
   res.status(200).json({
     authenticated: true,
     message: "user successfully authenticated",
