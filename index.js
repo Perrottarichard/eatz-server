@@ -89,8 +89,9 @@ app.use('/api/menuItems', itemsRouter)
 app.use('/account', userAccountRouter)
 
 const authCheck = (req, res, next) => {
-  console.log(req.user)
+  console.log('authcheck')
   if (!req.user) {
+    console.log('!user')
     res.status(401).json({
       authenticated: false,
       message: "user has not been authenticated"
