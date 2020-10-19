@@ -25,10 +25,10 @@ const app = express()
 app.use(cors({
 
   //dev
-  //origin: "http://localhost:3000",
+  origin: "http://localhost:3000",
 
   //prod
-  origin: "https://pizzapizzadelivery.netlify.app",
+  // origin: "https://pizzapizzadelivery.netlify.app",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true // allow session cookie from browser to pass through
 }))
