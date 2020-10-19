@@ -28,7 +28,7 @@ app.use(cors({
   //origin: "http://localhost:3000",
 
   //prod
-  origin: "https://pizzapizzadelivery.netlify.app",
+  origin: "https://pizzapizzadelivery.herokuapp.com",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true // allow session cookie from browser to pass through
 }))
