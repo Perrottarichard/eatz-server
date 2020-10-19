@@ -87,9 +87,10 @@ app.use('/api/menuItems', itemsRouter)
 //PUT user account info (favorites, cart, addresses)
 app.use('/account', userAccountRouter)
 
-console.log('reqUser', req.user)
+
 
 const authCheck = (req, res, next) => {
+  console.log('req', req)
   if (!req.user) {
     res.status(401).json({
       authenticated: false,
