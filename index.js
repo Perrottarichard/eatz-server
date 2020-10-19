@@ -55,7 +55,8 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   secure: true,
-  store: new MongoStore({ mongooseConnection: mongoose.connection })
+  store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  cookie: { httpOnly: true }
 }))
 
 //passport middleware
