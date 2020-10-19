@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Perrottarichard/EATZ-server.git"
+    "url": "git+https://github.com/Perrottarichard/pizzapizza-server.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Perrottarichard/EATZ-server/issues"
+    "url": "https://github.com/Perrottarichard/pizzapizza-server/issues"
   },
-  "homepage": "https://github.com/Perrottarichard/EATZ-server#readme",
+  "homepage": "https://github.com/Perrottarichard/pizzapizza-server#readme",
   "dependencies": {
     "axios": "^0.20.0",
     "connect-mongo": "^3.2.0",
