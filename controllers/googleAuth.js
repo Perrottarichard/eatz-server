@@ -5,10 +5,10 @@ const router = express.Router()
 
 const CLIENT_HOME =
   //dev
-  'http://localhost:3000'
+  // 'http://localhost:3000'
 
-//prod
-// "https://pizzapizzadelivery.netlify.app"
+  //prod
+  "https://pizzapizzadelivery.netlify.app"
 
 
 //in app.js /auth/google
