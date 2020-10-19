@@ -107,7 +107,7 @@ const authCheck = (req, res, next) => {
 //   response.sendFile(path.join(__dirname + '/build/index.html'));
 // });
 
-app.get("/", authCheck, async (req, res) => {
+app.get("*", authCheck, async (req, res) => {
   console.log('here')
   res.status(200).json({
     authenticated: true,
