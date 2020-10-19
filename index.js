@@ -103,11 +103,11 @@ const authCheck = (req, res, next) => {
 // otherwise, send a 401 not authenticated response
 // authCheck before routing to home page
 
-// app.get('/*', (request, response) => {
-//   response.sendFile(path.join(__dirname + '/build/index.html'));
-// });
+app.get('*', (request, response) => {
+  response.sendFile(path.join(__dirname + '/build/index.html'));
+});
 
-app.get("/", authCheck, async (req, res) => {
+app.get("*", authCheck, async (req, res) => {
   console.log('here')
   res.status(200).json({
     authenticated: true,
