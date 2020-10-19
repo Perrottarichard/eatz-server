@@ -49,7 +49,7 @@ app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false,
-  store: new MongoStore({ mongooseConnection: mongoose.connection })
+  store: new MongoStore({ mongooseConnection: mongoose.connection }),
 }))
 
 //passport middleware
@@ -83,6 +83,8 @@ app.use('/api/menuItems', itemsRouter)
 //PUT user account info (favorites, cart, addresses)
 app.use('/account', userAccountRouter)
 
+console.log('reqUser', req.user)
+
 const authCheck = (req, res, next) => {
   if (!req.user) {
     res.status(401).json({
@@ -101,8 +103,7 @@ app.get("/", authCheck, async (req, res) => {
   res.status(200).json({
     authenticated: true,
     message: "user successfully authenticated",
-    user: req.user,
-    cookies: req.cookies
+    user: req.user
   });
 });
 
