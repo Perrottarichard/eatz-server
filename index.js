@@ -45,9 +45,9 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     console.error('error connecting to MongoDB:', error.message)
   })
 
-
-app.use(express.static(path.join(__dirname, 'build')))
 app.use(express.json())
+app.use(express.static(path.join(__dirname, 'build')))
+
 
 //express-session middleware
 app.use(session({
@@ -89,15 +89,12 @@ app.use('/api/menuItems', itemsRouter)
 app.use('/account', userAccountRouter)
 
 const authCheck = (req, res, next) => {
-  console.log('authcheck')
   if (!req.user) {
-    console.log('!user')
     res.status(401).json({
       authenticated: false,
       message: "user has not been authenticated"
     });
   } else {
-    console.log('next')
     next();
   }
 };
@@ -105,6 +102,10 @@ const authCheck = (req, res, next) => {
 // if logged in, send the profile response,
 // otherwise, send a 401 not authenticated response
 // authCheck before routing to home page
+app.get('*', (request, response) => {
+  response.sendFile(path.join(__dirname + '/build/index.html'));
+});
+
 app.get("/", authCheck, async (req, res) => {
   console.log('here')
   res.status(200).json({
@@ -113,10 +114,6 @@ app.get("/", authCheck, async (req, res) => {
     user: req.user,
     cookies: req.cookies
   });
-});
-
-app.get('*', (request, response) => {
-  response.sendFile(path.join(__dirname + '/build/index.html'));
 });
 
 let PORT = process.env.PORT || 3001
