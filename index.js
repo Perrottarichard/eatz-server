@@ -68,10 +68,10 @@ app.use('/api/textSearch', textSearchRouter)
 app.use('/api/placeDetails', placeDetailsRouter)
 
 //google login authentication route
-app.use('/api/auth/google', googleAuthRouter)
+app.use('/auth/google', googleAuthRouter)
 
 //facebook login authentication route
-app.use('/api/auth/facebook', facebookAuthRouter)
+app.use('/auth/facebook', facebookAuthRouter)
 
 // authentication endpoint helpers
 app.use('/api/authhelpers', authHelpers)
