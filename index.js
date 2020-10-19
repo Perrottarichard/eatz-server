@@ -87,6 +87,14 @@ app.use('/api/menuItems', itemsRouter)
 //PUT user account info (favorites, cart, addresses)
 app.use('/api/account', userAccountRouter)
 
+app.get("/api", authCheck, async (req, res) => {
+  res.status(200).json({
+    authenticated: true,
+    message: "user successfully authenticated",
+    user: req.user
+  });
+});
+
 
 
 const authCheck = (req, res, next) => {
@@ -107,14 +115,6 @@ const authCheck = (req, res, next) => {
 
 app.get('*', (request, response) => {
   response.sendFile(path.join(__dirname + '/build/index.html'));
-});
-
-app.get("/api", authCheck, async (req, res) => {
-  res.status(200).json({
-    authenticated: true,
-    message: "user successfully authenticated",
-    user: req.user
-  });
 });
 
 let PORT = process.env.PORT || 3001
