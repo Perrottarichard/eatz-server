@@ -54,7 +54,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
-  cookie: { sameSite: 'strict', secure: "auto", domain: 'pizzapizzadelivery.herokuapp.com' }
+  cookie: { sameSite: 'strict', secure: "auto", domain: 'pizzapizzadelivery.netlify.app' }
 }))
 
 //passport middleware
