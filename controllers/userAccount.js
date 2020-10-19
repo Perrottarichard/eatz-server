@@ -118,9 +118,9 @@ router.put('/addNewOrder', async (req, res) => {
     res.json(saved)
     // create reusable transporter object
     let transporter = nodemailer.createTransport({
-      host: "mail.mangolatte.dev",
-      port: 26,
-      secure: false, // true for 465, false for other ports
+      host: "mangolatte.dev",
+      port: 465,
+      secure: true, // true for 465, false for other ports
       auth: {
         user: 'richard@mangolatte.dev',
         pass: `${process.env.MAILPASS}`,
