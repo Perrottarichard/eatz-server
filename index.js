@@ -102,7 +102,7 @@ const authCheck = (req, res, next) => {
 // if logged in, send the profile response,
 // otherwise, send a 401 not authenticated response
 // authCheck before routing to home page
-app.get('*', (request, response) => {
+app.get('/*', (request, response) => {
   response.sendFile(path.join(__dirname + '/build/index.html'));
 });
 
