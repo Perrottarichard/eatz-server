@@ -28,7 +28,7 @@ app.use(cors({
   // origin: "http://localhost:3000",
 
   //prod
-  origin: "https://pizzapizzadelivery.netlify.app",
+  origin: "https://pizzapizzadelivery.herokuapp.com",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true // allow session cookie from browser to pass through
 }))
@@ -46,7 +46,7 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   })
 
 app.use(express.json())
-// app.use(express.static(path.join(__dirname, 'build')))
+app.use(express.static(path.join(__dirname, 'build')))
 
 //express-session middleware
 app.use(session({
@@ -68,13 +68,13 @@ app.use('/api/textSearch', textSearchRouter)
 app.use('/api/placeDetails', placeDetailsRouter)
 
 //google login authentication route
-app.use('/auth/google', googleAuthRouter)
+app.use('/api/auth/google', googleAuthRouter)
 
 //facebook login authentication route
-app.use('/auth/facebook', facebookAuthRouter)
+app.use('/api/auth/facebook', facebookAuthRouter)
 
 // authentication endpoint helpers
-app.use('/authhelpers', authHelpers)
+app.use('/api/authhelpers', authHelpers)
 
 //POST new restaurant request endpoint
 app.use('/api/requestNewRestaurant', newRestaurantRequestRouter)
@@ -86,7 +86,7 @@ app.use('/api/promos', promosRouter)
 app.use('/api/menuItems', itemsRouter)
 
 //PUT user account info (favorites, cart, addresses)
-app.use('/account', userAccountRouter)
+app.use('/api/account', userAccountRouter)
 
 
 
@@ -106,11 +106,11 @@ const authCheck = (req, res, next) => {
 // otherwise, send a 401 not authenticated response
 // authCheck before routing to home page
 
-// app.get('*', (request, response) => {
-//   response.sendFile(path.join(__dirname + '/build/index.html'));
-// });
+app.get('*', (request, response) => {
+  response.sendFile(path.join(__dirname + '/build/index.html'));
+});
 
-app.get("/", authCheck, async (req, res) => {
+app.get("/api", authCheck, async (req, res) => {
   res.status(200).json({
     authenticated: true,
     message: "user successfully authenticated",

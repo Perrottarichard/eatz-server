@@ -4,7 +4,7 @@ const User = require('../models/User')
 const shortid = require('shortid')
 const nodemailer = require('nodemailer')
 
-//in app.js /account
+//in app.js /api/account
 
 //add favorite restaurant
 router.put('/favorite', async (req, res) => {
