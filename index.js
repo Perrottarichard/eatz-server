@@ -54,7 +54,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
-  cookie: { sameSite: "none", secure: "auto", domain: "https://pizzapizzadelivery.netlify.app" }
+  cookie: { sameSite: "none", secure: "auto" }
 }))
 
 //passport middleware
