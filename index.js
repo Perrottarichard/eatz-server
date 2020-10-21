@@ -46,7 +46,9 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   })
 
 app.use(express.json())
-app.use(express.static(path.join(__dirname, 'build')))
+
+//prod
+// app.use(express.static(path.join(__dirname, 'build')))
 
 //express-session middleware
 app.use(session({
@@ -108,9 +110,10 @@ app.get("/api", authCheck, async (req, res) => {
   });
 });
 
-app.get('*', (request, response) => {
-  response.sendFile(path.join(__dirname + '/build/index.html'));
-});
+//prod
+// app.get('*', (request, response) => {
+//   response.sendFile(path.join(__dirname + '/build/index.html'));
+// });
 
 let PORT = process.env.PORT || 3001
 

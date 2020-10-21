@@ -6,7 +6,7 @@ const CLIENT_HOME =
   // 'http://localhost:3000'
 
   //prod
-  "https://pizzapizzadelivery.netlify.app"
+  "https://pizzapizzadelivery.herokuapp.com"
 
 //in app.js /authhelpers
 
