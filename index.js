@@ -10,6 +10,8 @@ const searchCoordinatesRouter = require('./controllers/searchByCoordinates')
 const autoSearchPredictionsRouter = require('./controllers/autoSearchPredictions')
 const textSearchRouter = require('./controllers/textSearch')
 const googleAuthRouter = require('./controllers/googleAuth')
+const localAuthRegisterRouter = require('./controllers/localAuthRegister')
+const localAuthSignInRouter = require('./controllers/localAuthSignIn')
 const facebookAuthRouter = require('./controllers/facebookAuth')
 const authHelpers = require('./controllers/authHelpers')
 const newRestaurantRequestRouter = require('./controllers/newRestaurantRequest')
@@ -17,9 +19,9 @@ const itemsRouter = require('./controllers/items')
 const placeDetailsRouter = require('./controllers/placeDetails')
 const userAccountRouter = require('./controllers/userAccount')
 const promosRouter = require('./controllers/promos');
-const User = require('./models/User');
 require('./googlePassport')(passport)
 require('./facebookPassport')(passport)
+require('./localAuthPassport')(passport)
 
 const app = express()
 app.use(cors({
@@ -71,6 +73,12 @@ app.use('/api/placeDetails', placeDetailsRouter)
 //google login authentication route
 app.use('/auth/google', googleAuthRouter)
 
+//local login authentication route
+app.use('/auth/local/signin', localAuthSignInRouter)
+
+//local account register route
+app.use('/auth/local/register', localAuthRegisterRouter)
+
 //facebook login authentication route
 app.use('/auth/facebook', facebookAuthRouter)
 
@@ -88,6 +96,7 @@ app.use('/api/menuItems', itemsRouter)
 
 //PUT user account info (favorites, cart, addresses)
 app.use('/api/account', userAccountRouter)
+
 
 const authCheck = (req, res, next) => {
   if (!req.user) {

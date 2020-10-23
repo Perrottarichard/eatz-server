@@ -19,6 +19,9 @@ const UserSchema = new mongoose.Schema({
   email: {
     type: String
   },
+  password: {
+    type: String
+  },
   image: {
     type: String
   },
@@ -101,7 +104,5 @@ const UserSchema = new mongoose.Schema({
     specialInstructions: String
   }]
 })
-
-UserSchema.plugin(require('mongoose-autopopulate'))
 
 module.exports = mongoose.model('User', UserSchema)
