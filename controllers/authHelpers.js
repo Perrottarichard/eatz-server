@@ -3,10 +3,10 @@ const router = express.Router()
 
 const CLIENT_HOME =
   //dev
-  // 'http://localhost:3000'
+  'http://localhost:3000'
 
-  //prod
-  "https://pizzapizzadelivery.herokuapp.com"
+//prod
+// "https://pizzapizzadelivery.herokuapp.com"
 
 //in app.js /authhelpers
 
