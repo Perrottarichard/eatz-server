@@ -8,13 +8,13 @@ router.post('/', async (request, response) => {
   const { firstName, lastName, email, password } = request.body
 
   if (!password || password.length < 6 || !email || !firstName) {
-    return response.status(400).send({
+    return response.status(400).json({
       error: 'password must be at least 6 characters and you must include a an email and first name'
     })
   }
   let isUserAlready = await User.findOne({ email: email })
   if (isUserAlready) {
-    return response.status(400).send({
+    return response.status(400).json({
       error: 'a user with this email already exists'
     })
   }
