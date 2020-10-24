@@ -5,16 +5,16 @@ const router = express.Router()
 
 const CLIENT_HOME =
   //dev
-  'http://localhost:3000'
+  // 'http://localhost:3000'
 
-//prod
-// "https://pizzapizzadelivery.herokuapp.com"
+  //prod
+  "https://pizzapizzadelivery.herokuapp.com"
 
 
 //in app.js /auth/local/signin
 
 //local auth
-router.post('/', passport.authenticate('local', { failureRedirect: 'http://localhost:3000/api' }),
+router.post('/', passport.authenticate('local', { failureRedirect: `${CLIENT_HOME}` }),
   function (req, res) {
     res.json(req.user)
   })
