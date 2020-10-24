@@ -14,7 +14,7 @@ const CLIENT_HOME =
 //in app.js /auth/local/signin
 
 //local auth
-router.post('/', passport.authenticate('local', { failureRedirect: `${CLIENT_HOME}` }),
+router.post('/', passport.authenticate('local'),
   function (req, res) {
     res.json(req.user)
   })

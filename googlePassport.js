@@ -28,7 +28,7 @@ module.exports = (passport) => {
             port: 587,
             secure: false, // true for 465, false for other ports
             auth: {
-              user: 'richardmendacks@gmail.com',
+              user: 'pizzapizzamailer@gmail.com',
               pass: `${process.env.MAILPASS}`,
             },
             tls: { rejectUnauthorized: false }
@@ -36,7 +36,7 @@ module.exports = (passport) => {
 
           // send mail with defined transport object
           let info = await transporter.sendMail({
-            from: '"PizzaPizza" <richardmendacks@gmail.com>', // sender address
+            from: '"PizzaPizza" <pizzapizzamailer@gmail.com>', // sender address
             to: `${user.email}`, // list of receivers
             subject: "Welcome to PizzaPizza", // Subject line
             text: "Successfully registered", // plain text body
