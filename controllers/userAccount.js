@@ -118,11 +118,11 @@ router.put('/addNewOrder', async (req, res) => {
     res.json(saved)
     // create reusable transporter object
     let transporter = nodemailer.createTransport({
-      host: "mangolatte.dev",
-      port: 465,
-      secure: true, // true for 465, false for other ports
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false, // true for 465, false for other ports
       auth: {
-        user: 'richard@mangolatte.dev',
+        user: 'pizzapizzamailer@gmail.com',
         pass: `${process.env.MAILPASS}`,
       },
       tls: { rejectUnauthorized: false }
@@ -136,7 +136,7 @@ router.put('/addNewOrder', async (req, res) => {
     `
     // send mail with defined transport object
     let info = await transporter.sendMail({
-      from: '"PizzaPizza" <richard@mangolatte.dev>', // sender address
+      from: '"PizzaPizza" <pizzapizzamailer@gmail.com>', // sender address
       to: `${user.email}`, // list of receivers
       subject: "PizzaPizza order confirmation", // Subject line
       text: "Order placed", // plain text body
