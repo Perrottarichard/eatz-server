@@ -17,6 +17,6 @@ const CLIENT_HOME =
 router.get('/', passport.authenticate('google', { scope: ['profile', 'email'] }))
 
 //google auth callback
-router.get('/callback', passport.authenticate('google', { failureRedirect: '/login/failed', successRedirect: `${CLIENT_HOME}/dashboard` }))
+router.get('/callback', passport.authenticate('google', { failureRedirect: `${CLIENT_HOME}/authhelpers/login/failed`, successRedirect: `${CLIENT_HOME}/dashboard` }))
 
 module.exports = router
