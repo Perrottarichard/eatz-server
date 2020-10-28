@@ -77,22 +77,23 @@ const UserSchema = new mongoose.Schema({
       },
       confirmation: String,
       date: { type: Date, default: Date.now },
+      paymentMethod: { type: String, default: 'credit/debit' },
+      paymentInfoObject: {
+        creditCardNumber: String,
+        creditCardExpire: String,
+        creditCardType: String,
+        creditCardNameOnCard: String,
+        creditCardCVV: String
+      }
     }
   ],
-  paymentInfo: {
-    firstName: String,
-    lastName: String,
-    shippingAddress: String,
-    city: String,
-    state: String,
-    zip: String,
-    country: String,
+  paymentInfoArray: [{
     creditCardNumber: String,
     creditCardExpire: String,
     creditCardType: String,
     creditCardNameOnCard: String,
     creditCardCVV: String
-  },
+  }],
   addresses: [{
     locationName: String,
     addressNumber: String,

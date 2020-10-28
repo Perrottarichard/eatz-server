@@ -176,5 +176,30 @@ router.put('/editAddress', async (req, res) => {
     console.log(error)
   }
 })
+router.put('/addNewPaymentInfo', async (req, res) => {
+  let user_id = req.body.user_id
+  let infoObject = req.body.infoObject
+  try {
+    const user = await User.findById(user_id)
+    user.paymentInfoArray.push(infoObject)
+    const saved = await user.save()
+    res.json(saved)
+  } catch (error) {
+    console.log(error)
+  }
+})
+router.put('/editPayment', async (req, res) => {
+  let user_id = req.body.user_id
+  let indexToEdit = req.body.indexToEdit
+  let infoObject = req.body.infoObject
+  try {
+    const user = await User.findById(user_id)
+    user.paymentInfoArray[indexToEdit] = infoObject
+    const saved = await user.save()
+    res.json(saved)
+  } catch (error) {
+    console.log(error)
+  }
+})
 
 module.exports = router

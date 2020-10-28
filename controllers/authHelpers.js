@@ -3,24 +3,12 @@ const router = express.Router()
 
 const CLIENT_HOME =
   //dev
-  // 'http://localhost:3000'
+  'http://localhost:3000'
 
-  //prod
-  "https://pizzapizzadelivery.herokuapp.com"
+//prod
+// "https://pizzapizzadelivery.herokuapp.com"
 
 //in app.js /authhelpers
-
-//successful login
-router.get('/login/success', (req, res) => {
-  if (req.user) {
-    res.json({
-      success: true,
-      message: "user successfully authenticated",
-      user: req.user,
-      cookies: req.cookies
-    })
-  }
-})
 
 //failed login with message
 router.get('/login/failed', (req, res) => {
