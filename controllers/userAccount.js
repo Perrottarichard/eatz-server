@@ -106,11 +106,14 @@ router.put('/clearCart', async (req, res) => {
 })
 router.put('/addNewOrder', async (req, res) => {
   let user_id = req.body.user_id
+  let creditCardTip = req.body.creditCardTip
+  let cardId = req.body.cardId
   try {
     const user = await User.findById(user_id)
     const cartCopy = [...user.cart]
     const confirmation = shortid.generate()
-    const order = { user: user_id, confirmation: confirmation, cart: cartCopy, activeCartBilling: user.activeCartBilling }
+    const cardUsed = user.paymentInfoArray.find(x => x.id === cardId)
+    const order = { user: user_id, confirmation: confirmation, cart: cartCopy, activeCartBilling: user.activeCartBilling, creditCardTip: creditCardTip, paymentInfo: cardUsed }
     user.orders.push(order)
     user.activeCartBilling = {}
     user.cart = []
