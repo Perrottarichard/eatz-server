@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 
 const NewRestaurantRequestSchema = new mongoose.Schema({
   restaurantName: String,
-  city: String,
-  country: String,
+  latitude: String,
+  longitude: String,
   createdAt: {
     type: Date,
     default: Date.now

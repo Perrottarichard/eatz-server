@@ -5,8 +5,8 @@ const NewRestaurant = require('../models/NewRestaurantRequest')
 router.post('/', async (req, res) => {
   const restaurantToAdd = {
     restaurantName: req.body.name,
-    city: req.body.city,
-    country: req.body.country
+    latitude: req.body.lat,
+    longitude: req.body.lon
   }
   try {
     await NewRestaurant.create(restaurantToAdd)
